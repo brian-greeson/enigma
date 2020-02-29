@@ -1,4 +1,4 @@
-require "minitest/autorun"
+require "./test/test_helper"
 require "./lib/character_set"
 
 class CharacterSetTest < Minitest::Test
