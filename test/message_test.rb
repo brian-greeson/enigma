@@ -1,7 +1,7 @@
 require "./test/test_helper"
-require "./lib/message.rb"
+require "./lib/message"
 
-class Message < Minitest::Test
+class MessageTest < Minitest::Test
 
   def test_it_exists
     assert_instance_of Message, Message.new
