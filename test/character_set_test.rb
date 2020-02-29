@@ -1,4 +1,5 @@
 require "minitest/autorun"
+require "./lib/character_set"
 
 class CharacterSetTest < Minitest::Test
 
@@ -14,13 +15,13 @@ class CharacterSetTest < Minitest::Test
                             "q", "r", "s", "t", "u", "v", "w", "x",
                             "y", "z", " "
                           ]
-    assert_equal expected_characters, charater_set.all
+    assert_equal expected_characters, charater_set.all_characters
   end
 
-  def test_it_takes_custom_character_sets
-    charater_set = CharacterSet,new(["g", "5", "R", "w"])
+  def test_it_takes_custom_characters
+    charater_set = CharacterSet.new(["g", "5", "R", "w"])
 
-    assert_equal ["g", "5", "R", "w"], charater_set.all
+    assert_equal ["g", "5", "R", "w"], charater_set.all_characters
   end
 
 end
