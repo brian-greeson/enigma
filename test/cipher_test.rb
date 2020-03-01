@@ -7,10 +7,10 @@ class CipherTest < Minitest::Test
     assert_instance_of Cipher, Cipher.new
   end
 
-  def test_it_has_a_charater_set
+  def test_it_has_a_character_set
     cipher = Cipher.new
 
-    assert_instance_of CharacterSet, cipher.charater_set
+    assert_instance_of CharacterSet, cipher.character_set
   end
 
   def test_it_encypts_a_message
