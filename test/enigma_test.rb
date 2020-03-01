@@ -8,7 +8,6 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_encypt_a_message
-    skip
     enigma = Enigma.new
     expected = {
                 encryption: "keder ohulw",
@@ -22,12 +21,10 @@ class EnigmaTest < Minitest::Test
   def test_it_can_shift_chars
     enigma = Enigma.new
     offsets = mock
-    offsets.stubs(:offset_a).returns(1)
-    offsets.stubs(:offset_b).returns(1)
-    offsets.stubs(:offset_c).returns(1)
-    offsets.stubs(:offset_d).returns(1)
+    offsets.stubs(:all).returns([1,2,3,4])
 
-    assert_equal ["b","c","d","e"], enigma.encypt_chars(["a","b","c","d"], offsets)
+    assert_equal ["b","d","f","h"], enigma.encrypt_chars(["a","b","c","d"], offsets)
+    assert_equal ["y"," ","b"], enigma.encrypt_chars(["x","y","z"], offsets)
 
   end
 
