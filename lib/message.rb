@@ -1,6 +1,6 @@
 class Message
-  attr_reader :text, :key, :date
 
+  attr_reader :text, :key, :date
   def initialize(message = nil, key = nil, date = nil)
     @text = message
     @key  = key ? key : make_key
@@ -14,6 +14,5 @@ class Message
   def todays_date
      Date.today.strftime("%d%m%y")
   end
-
 
 end

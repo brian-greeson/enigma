@@ -7,33 +7,23 @@ class MessageTest < Minitest::Test
     assert_instance_of Message, Message.new
   end
 
-  def test_it_knows_message_text
-    expected_message = "Hello World. Get ready for tacos!"
-    message = Message.new(expected_message)
+  def test_it_has_attributes
+    message = Message.new(
+                          "Hello World. Get ready for tacos!",
+                          "01234",
+                          "131299"
+                          )
 
-    assert_equal expected_message, message.text
-  end
-
-  def test_it_knows_message_key
-    text = mock
-    message = Message.new(text, "01234")
-
+    assert_equal "Hello World. Get ready for tacos!", message.text
     assert_equal "01234", message.key
+    assert_equal "131299", message.date
   end
 
   def test_it_makes_a_new_key_when_not_given_one
-    text = mock
     Random.stubs(:rand).returns(1234)
-    message = Message.new(text)
+    message = Message.new
 
     assert_equal "01234", message.key
-  end
-
-  def test_it_knows_date_of_message
-    text, key = mock
-    message = Message.new(text, key, "131299")
-
-    assert_equal "131299", message.date
   end
 
   def test_it_uses_todays_date_when_not_given_date
