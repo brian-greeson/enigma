@@ -8,6 +8,10 @@ class Shift
       end
     end
 
+    def all
+      @offsets
+    end
+
     def offset_a
       @offsets[0]
     end

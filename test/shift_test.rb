@@ -16,4 +16,9 @@ class ShiftTest < Minitest::Test
     assert_equal 20, shift.offset_d
   end
 
+  def test_it_can_give_all_the_offsets
+    shift = Shift.new("02715", "040895")
+
+    assert_equal [3,27,73,20], shift.all
+  end
 end
