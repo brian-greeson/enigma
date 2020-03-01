@@ -15,14 +15,14 @@ class MessageTest < Minitest::Test
   end
 
   def test_it_knows_message_key
-    text = "Hello World. Get ready for tacos!"
+    text = mock
     message = Message.new(text, "01234")
 
     assert_equal "01234", message.key
   end
 
   def test_it_makes_a_new_key_when_not_given_one
-    text = "Hello World. Get ready for tacos!"
+    text = mock
     Random.stubs(:rand).returns(1234)
     message = Message.new(text)
 
@@ -30,16 +30,20 @@ class MessageTest < Minitest::Test
   end
 
   def test_it_knows_date_of_message
-    # expected_message = "Hello World. Get ready for tacos!"
-    # message1 = Message.new(expected_message)
-    #
-    # assert_equal Date.today, message1.date
-    #
-    # expected_date = Date.new(1999,12,13)
-    # message2 = Message.new(expected_message, expected_date)
-    #
-    # assert_equal expected_date, message2.date
+    text = mock
+    key = mock
+    message = Message.new(text, key, "131299")
 
+    assert_equal "131299", message.date
+  end
+
+  def test_it_uses_todays_date_when_not_given_date
+    text = mock
+    key = mock
+    Date.stubs(:today).returns(Date.new(1999, 12, 13))
+    message = Message.new(text, key)
+
+    assert_equal "131299", message.date
   end
 
 end
