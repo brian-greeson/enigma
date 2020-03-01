@@ -11,4 +11,8 @@ class CharacterSet
     @characters
   end
 
+  def shift(starting_char, shift_amount)
+    @characters.rotate(@characters.index(starting_char) + shift_amount).first
+  end
+
 end
