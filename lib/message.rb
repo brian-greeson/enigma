@@ -12,7 +12,7 @@ class Message
   end
 
   def todays_date
-
+     Date.today.strftime("%d%m%y")
   end
 
 
