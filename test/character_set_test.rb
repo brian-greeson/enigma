@@ -15,13 +15,7 @@ class CharacterSetTest < Minitest::Test
                             "q", "r", "s", "t", "u", "v", "w", "x",
                             "y", "z", " "
                           ]
-    assert_equal expected_characters, charater_set.all_characters
-  end
-
-  def test_it_takes_custom_characters
-    charater_set = CharacterSet.new(["g", "5", "R", "w"])
-
-    assert_equal ["g", "5", "R", "w"], charater_set.all_characters
+    assert_equal expected_characters, charater_set.default_set
   end
 
   def test_it_can_rotate_the_set
