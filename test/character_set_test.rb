@@ -24,4 +24,13 @@ class CharacterSetTest < Minitest::Test
     assert_equal ["g", "5", "R", "w"], charater_set.all_characters
   end
 
+  def test_it_can_rotate_the_set
+    character_set = CharacterSet.new
+
+    assert_equal "b", character_set.shift("a", 1)
+    assert_equal "d", character_set.shift("b", 2)
+    assert_equal "a", character_set.shift("z", 2)
+    assert_equal "d", character_set.shift("d", 27)
+  end
+
 end
