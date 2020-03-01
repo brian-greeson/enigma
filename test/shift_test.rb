@@ -4,7 +4,6 @@ require "./lib/shift"
 class ShiftTest < Minitest::Test
 
   def test_it_exists
-    key, date = mock
     assert_instance_of Shift, Shift.new("01234", "011399")
   end
 
