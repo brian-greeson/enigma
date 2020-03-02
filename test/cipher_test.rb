@@ -13,18 +13,4 @@ class CipherTest < Minitest::Test
     assert_instance_of CharacterSet, cipher.character_set
   end
 
-  def test_it_encypts_a_message
-    cipher = Cipher.new
-    message = Message.new
-
-    assert_instance_of Message, cipher.encypt(message)
-  end
-
-  def test_it_decrypts_a_message
-    cipher = Cipher.new
-    message = Message.new
-
-    assert_instance_of Message, cipher.decypt(message)
-  end
-
 end
