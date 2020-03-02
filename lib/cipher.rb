@@ -26,4 +26,13 @@ class Cipher
     ciphertext_file.write(content)
     ciphertext_file.close
   end
+
 end
+
+
+# def transcode_file(files = {}, encoding_details = {}, direction)
+#   source_text = File.open(source_file, "r")
+#   message = Message.new(source_text.read, encoding_details[:key], encoding_details[:date])
+#
+#   transcode_message(message, direction).text
+# end
