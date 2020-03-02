@@ -9,6 +9,7 @@ class CharacterSet
   end
 
   def shift(starting_char, shift_amount)
+    shift_amount = shift_amount % @characters.size
     @characters.rotate(@characters.index(starting_char) + shift_amount).first
   end
 
