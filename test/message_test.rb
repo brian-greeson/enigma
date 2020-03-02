@@ -27,9 +27,8 @@ class MessageTest < Minitest::Test
   end
 
   def test_it_uses_todays_date_when_not_given_date
-    text, key = mock
     Date.stubs(:today).returns(Date.new(1999, 12, 13))
-    message = Message.new(text, key)
+    message = Message.new
 
     assert_equal "131299", message.date
   end
