@@ -48,4 +48,5 @@ class EnigmaTest < Minitest::Test
     decrypt_result = enigma.transcode_message(ciphertext_message, :decrypt)
     assert_equal plaintext_message.text, decrypt_result.text
   end
+  
 end
