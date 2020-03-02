@@ -14,6 +14,7 @@ class Shift
       # 4.times do |i|
       #   @offsets << key[i..i+1].to_i + date_squared / 10 ** (3 - i) % 10
       # end
+      # Which is more readable?
     end
 
     def date_squared
