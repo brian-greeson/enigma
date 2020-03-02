@@ -1,9 +1,10 @@
+require "date"
 require_relative "cipher"
 require_relative "shift"
 
 class Enigma < Cipher
 
-  def encrypt(text, key, date)
+  def encrypt(text = nil, key = nil, date = nil)
     encrypted_message = transcode_message(Message.new(text, key, date), :encrypt)
     {
       encryption: encrypted_message.text,
@@ -12,7 +13,7 @@ class Enigma < Cipher
     }
   end
 
-  def decrypt(text, key, date)
+  def decrypt(text = nil, key = nil, date = nil)
     decrypted_message = transcode_message(Message.new(text, key, date), :decrypt)
     {
       decryption: decrypted_message.text,

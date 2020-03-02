@@ -28,4 +28,23 @@ class CharacterSetTest < Minitest::Test
     assert_equal "d", character_set.shift("d", 27)
   end
 
+  def test_it_only_shifts_characters_in_the_set
+    character_set = CharacterSet.new
+
+    assert_equal "!", character_set.shift("!", 1)
+    assert_equal "A", character_set.shift("A", 1)
+  end
+
+  def test_it_only_rotates_once
+    character_set = CharacterSet.new
+
+    assert_equal 1, character_set.rotate_only_once(28)
+    assert_equal 26, character_set.rotate_only_once(26)
+    assert_equal 0, character_set.rotate_only_once(27)
+  end
+
+  def test_it_knows_how_far_away_to_shift
+
+  end
+
 end
