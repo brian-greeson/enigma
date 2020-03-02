@@ -17,9 +17,16 @@ class ShiftTest < Minitest::Test
     assert_equal 20, shift.offset_d(key, date_squared)
   end
 
-  def test_it_can_give_all_the_offsets
+  def test_it_can_give_all_the_offsets_for_encryption
     shift = Shift.new("02715", "040895")
 
     assert_equal [3,27,73,20], shift.all
+  end
+
+  def test_it_can_give_all_the_offsets_for_decryption
+    shift = Shift.new("02715", "040895", :decrypt)
+
+    assert_equal [-3,-27,-73,-20], shift.all
+
   end
 end

@@ -10,12 +10,14 @@ class Shift
                     offset_c(key, date_squared),
                     offset_d(key, date_squared)
                   ]
-      if direction == :decrypt
-        @offsets.map! { |offset| - offset }
-      end
+      set_direction(direction)
       # 4.times do |i|
       #   @offsets << key[i..i+1].to_i + date_squared / 10 ** (3 - i) % 10
       # end
+    end
+
+    def set_direction(direction)
+      @offsets.map! { |offset| - offset } if direction == :decrypt
     end
 
     def all
