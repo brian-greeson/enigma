@@ -42,9 +42,5 @@ class CharacterSetTest < Minitest::Test
     assert_equal 26, character_set.rotate_only_once(26)
     assert_equal 0, character_set.rotate_only_once(27)
   end
-
-  def test_it_knows_how_far_away_to_shift
-
-  end
-
+  
 end
