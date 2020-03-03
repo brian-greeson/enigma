@@ -1,7 +1,7 @@
 class CharacterSet
 
   def initialize
-  @characters = default_set
+    @characters = default_set
   end
 
   def default_set
