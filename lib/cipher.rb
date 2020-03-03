@@ -27,6 +27,7 @@ class Cipher
     ciphertext_file.close
   end
 
+  
 end
 
 
