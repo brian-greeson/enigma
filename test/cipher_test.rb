@@ -22,16 +22,35 @@ class CipherTest < Minitest::Test
     assert_equal "hello world", results
   end
 
-  def test_it_can_transcode_messages
+  def test_it_can_transcode_files
     enigma = Enigma.new
-    plaintext_message  = Message.new("hello world", "02715", "040895" )
-    ciphertext_message = Message.new("keder ohulw", "02715", "040895" )
 
-    encrypt_result =  enigma.transcode_message(plaintext_message, :encrypt)
-    assert_equal ciphertext_message.text, encrypt_result.text
+    files = {
+              source: "./test/fixtures/plaintext.txt",
+              target: "./test/fixtures/results/ciphertext.txt"
+            }
+    settings = {
+                key: "02715",
+                date: "040895"
+               }
+    enigma.transcode_file(files, settings, :encrypt)
+    result = File.open(files[:target], "r").read.chomp
 
-    decrypt_result = enigma.transcode_message(ciphertext_message, :decrypt)
-    assert_equal plaintext_message.text, decrypt_result.text
+    assert_equal "keder ohulw!", result
+
+    files = {
+              source: "./test/fixtures/ciphertext.txt",
+              target: "./test/fixtures/results/plaintext.txt"
+            }
+    settings = {
+                key: "02715",
+                date: "040895"
+               }
+
+    enigma.transcode_file(files, settings, :decrypt)
+    result = File.open(files[:target], "r").read.chomp
+    
+    assert_equal "hello world!", result
   end
 
 end
