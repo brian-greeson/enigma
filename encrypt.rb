@@ -1,8 +1,12 @@
+# ruby encrypt.rb test/fixtures/plaintext.txt test/fixtures/results/ciphertext.txt 02715 040895
 require "./lib/enigma"
 
-plaintext_filename, ciphertext_filename = ARGV
+files = {}
+message_info = {}
+
+files[:source], files[:target], message_info[:key], message_info[:date] = ARGV
 
 enigma = Enigma.new
 
-encrypted = enigma.encrypt_file(plaintext_filename, ciphertext_filename)
-puts "Created #{ciphertext_filename} with the key #{encrypted[:key]} and date #{encrypted[:date]}"
+encrypted = enigma.transcode_file(files, message_info, :encrypt)
+puts "Created #{files[:target]} with the key #{encrypted.key} and date #{encrypted.date}"
