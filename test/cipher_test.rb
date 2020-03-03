@@ -22,34 +22,16 @@ class CipherTest < Minitest::Test
     assert_equal "hello world", results
   end
 
-  def test_it_can_encrypt_a_file
-    cipher = Cipher.new
-    cipher.stubs(:encrypt).returns({encryption: "hello world!"})
-    source_filename = "./test/fixtures/plaintext.txt"
-    target_filename = "./test/fixtures/results/ciphertext.txt"
+  def test_it_can_transcode_messages
+    enigma = Enigma.new
+    plaintext_message  = Message.new("hello world", "02715", "040895" )
+    ciphertext_message = Message.new("keder ohulw", "02715", "040895" )
 
-    cipher.encrypt_file(source_filename, target_filename)
+    encrypt_result =  enigma.transcode_message(plaintext_message, :encrypt)
+    assert_equal ciphertext_message.text, encrypt_result.text
 
-    results_file = File.open(target_filename, "r")
-    results = results_file.read
-    expected = "hello world!"
-    
-    assert_equal expected, results
-  end
-
-  def test_it_can_decrypt_a_file
-    cipher = Cipher.new
-    cipher.stubs(:decrypt).returns({decryption: "hello world!"})
-    source_filename = "./test/fixtures/plaintext.txt"
-    target_filename = "./test/fixtures/results/plaintext.txt"
-
-    cipher.decrypt_file(source_filename, target_filename, "12345", "131299")
-
-    results_file = File.open(target_filename, "r")
-    results = results_file.read
-    expected = "hello world!"
-
-    assert_equal expected, results
+    decrypt_result = enigma.transcode_message(ciphertext_message, :decrypt)
+    assert_equal plaintext_message.text, decrypt_result.text
   end
 
 end
