@@ -28,11 +28,12 @@ class CipherTest < Minitest::Test
     source_filename = "./test/fixtures/plaintext.txt"
     target_filename = "./test/fixtures/results/ciphertext.txt"
 
-    expected = "hello world!"
-    results_file = File.open(target_filename, "r")
-    results = results_file.read
     cipher.encrypt_file(source_filename, target_filename)
 
+    results_file = File.open(target_filename, "r")
+    results = results_file.read
+    expected = "hello world!"
+    
     assert_equal expected, results
   end
 
@@ -40,12 +41,13 @@ class CipherTest < Minitest::Test
     cipher = Cipher.new
     cipher.stubs(:decrypt).returns({decryption: "hello world!"})
     source_filename = "./test/fixtures/plaintext.txt"
-    target_filename = "./test/fixtures/results/ciphertext.txt"
+    target_filename = "./test/fixtures/results/plaintext.txt"
 
-    expected = "hello world!"
+    cipher.decrypt_file(source_filename, target_filename, "12345", "131299")
+
     results_file = File.open(target_filename, "r")
     results = results_file.read
-    cipher.decrypt_file(source_filename, target_filename, "12345", "131299")
+    expected = "hello world!"
 
     assert_equal expected, results
   end
